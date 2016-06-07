@@ -21,12 +21,23 @@ class ClientController extends Controller
     }
 
     public function delete($id){
-        Client::find($id)->delete();
+        Cltry{
+            if(Client::find($id)){
+                Client::find($id)->delete();
+                return 'O Cliente foi apagado com sucesso';
+            }else{
+                return 'Cliente inesistente';
+            }
+        }
+        catch(ModelNotFoundException $e){
+            return 'Erro ao tentar deletar o Cliente. Erro: '.$e;
+        }
     }
 
     public function update(Request $request, $id)
     {
         Client::find($id)->update($request->all());
+        return Client::find($id);
     }
 
 
