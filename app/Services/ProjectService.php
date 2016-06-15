@@ -9,16 +9,16 @@
 namespace CodeProject\Services;
 
 
-use CodeProject\Repositories\ClientRepository;
-use CodeProject\Validators\ClientValidators;
+use CodeProject\Repositories\ProjectRepository;
+use CodeProject\Validators\ProjectValidators;
 
 
-class ClientService
+class ProjectService
 {
     protected $repository;
     protected $validator;
 
-    public function __construct(ClientRepository $repository, ClientValidators $validator)
+    public function __construct(ProjectRepository $repository, ProjectValidators $validator)
     {
         $this->repository = $repository;
         $this->validator = $validator;
@@ -27,6 +27,8 @@ class ClientService
     public function index()
     {
         try {
+            // não funciona assim
+            //return $this->repository->with(['owner','client'])->all();
             return $this->repository->all();
         } catch (\Exception  $e){
             return [
@@ -39,6 +41,8 @@ class ClientService
     public function show ($id)
     {
         try {
+            // não funciona assim
+            //return $this->repository->with(['owner','client'])->find($id);
             return $this->repository->find($id);
         } catch (\Exception  $e){
             return [
@@ -79,9 +83,9 @@ class ClientService
         try{
             if($this->repository->find($id)){
                 $this->repository->find($id)->delete();
-                return 'O Cliente foi apagado com sucesso!';
+                return 'O Projeto foi apagado com sucesso!';
             }else{
-                return 'Cliente inesistente!';
+                return 'Projeto inesistente!';
             }
         }
         catch(\Exception $e){

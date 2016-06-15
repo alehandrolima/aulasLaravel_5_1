@@ -14,11 +14,21 @@
 Route::get('/', function () {
     return view('welcome');
 });
+// route client
 Route::get('client', 'ClientController@index');
 Route::post('client', 'ClientController@store');
 Route::get('client/{id}', 'ClientController@show');
 Route::delete('client/{id}', 'ClientController@delete');
 Route::put('client/{id}', 'ClientController@update');
+
+// route project
+Route::get('project', 'ProjectController@index');
+Route::post('project', 'ProjectController@store');
+Route::get('project/{id}', 'ProjectController@show');
+Route::delete('project/{id}', 'ProjectController@delete');
+Route::put('project/{id}', 'ProjectController@update');
+
+
 
 
 
