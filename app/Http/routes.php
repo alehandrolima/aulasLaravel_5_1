@@ -21,12 +21,21 @@ Route::get('client/{id}', 'ClientController@show');
 Route::delete('client/{id}', 'ClientController@delete');
 Route::put('client/{id}', 'ClientController@update');
 
+// route project note
+Route::get('project/{id}/note', 'ProjectNoteController@index');
+Route::post('project/{id}/note', 'ProjectNoteController@store');
+Route::get('project/{id}/note/{noteId}', 'ProjectNoteController@show');
+Route::delete('project/{id}/note/{noteId}', 'ProjectNoteController@delete');
+Route::put('project/{id}/note/{noteId}', 'ProjectNoteController@update');
+
 // route project
 Route::get('project', 'ProjectController@index');
 Route::post('project', 'ProjectController@store');
 Route::get('project/{id}', 'ProjectController@show');
 Route::delete('project/{id}', 'ProjectController@delete');
 Route::put('project/{id}', 'ProjectController@update');
+
+
 
 
 

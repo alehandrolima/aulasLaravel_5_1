@@ -9,25 +9,25 @@
 namespace CodeProject\Services;
 
 
-use CodeProject\Repositories\ProjectRepository;
-use CodeProject\Validators\ProjectValidators;
+use CodeProject\Repositories\ProjectNoteRepository;
+use CodeProject\Validators\ProjectNoteValidator;
 
 
-class ProjectService
+class ProjectNoteService
 {
     protected $repository;
     protected $validator;
 
-    public function __construct(ProjectRepository $repository, ProjectValidators $validator)
+    public function __construct(ProjectNoteRepository $repository, ProjectNoteValidator $validator)
     {
         $this->repository = $repository;
         $this->validator = $validator;
     }
 
-    public function index()
+    public function index($id)
     {
         try {
-            return $this->repository->all();
+            return $this->repository->findWhere(['project_id' => $id]);
         } catch (\Exception  $e){
             return [
                 'error' => true,
@@ -36,10 +36,10 @@ class ProjectService
         }
     }
 
-    public function show ($id)
+    public function show ($id, $noteId)
     {
         try {
-            return $this->repository->find($id);
+            return $this->repository->findWhere(['project_id' => $id , 'id' => $noteId]);
         } catch (\Exception  $e){
             return [
                 'error' => true,
@@ -79,9 +79,9 @@ class ProjectService
         try{
             if($this->repository->find($id)){
                 $this->repository->find($id)->delete();
-                return 'O Projeto foi apagado com sucesso!';
+                return 'Anotação apagada com sucesso!';
             }else{
-                return 'Projeto inesistente!';
+                return 'Anotação inesistente!';
             }
         }
         catch(\Exception $e){
