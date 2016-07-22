@@ -4,21 +4,21 @@ namespace CodeProject\Repositories;
 
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use CodeProject\Repositories\ProjectNoteRepository;
-use CodeProject\Entities\ProjectNote;
-use CodeProject\Validators\ProjectNoteValidator;
+use CodeProject\Repositories\ProjectTaskRepository;
+use CodeProject\Entities\ProjectTask;
+use CodeProject\Validators\ProjectTaskValidator;
 
-class ProjectNoteRepositoryEloquent extends BaseRepository implements ProjectNoteRepository
+class ProjectTaskRepositoryEloquent extends BaseRepository implements ProjectTaskRepository
 {
     public function model()
     {
-        return ProjectNote::class;
+        return ProjectTask::class;
     }
 
     public function validator()
     {
 
-        return ProjectNoteValidator::class;
+        return ProjectTaskValidator::class;
     }
 
     public function boot()

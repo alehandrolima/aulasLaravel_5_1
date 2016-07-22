@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Comp
- * Date: 12/06/2016
- * Time: 19:19
- */
 
 namespace CodeProject\Validators;
 

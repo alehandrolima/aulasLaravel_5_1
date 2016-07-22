@@ -4,11 +4,10 @@ namespace CodeProject\Validators;
 
 use \Prettus\Validator\LaravelValidator;
 
-class ProjectNoteValidator extends LaravelValidator
+class ProjectMembersValidator extends LaravelValidator
 {
     protected $rules = [
         'project_id' => 'required|integer',
-        'title' => 'required',
-        'note' => 'required'
+        'user_id' => 'required|integer'
     ];
 }
