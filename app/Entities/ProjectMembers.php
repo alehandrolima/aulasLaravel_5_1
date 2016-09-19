@@ -13,12 +13,20 @@ class ProjectMembers extends Model implements Transformable
     public $timestamps = false;
     protected $fillable = [
         'project_id',
-        'user_id'
+        'member_id'
     ];
-    public function projects(){
-        return $this->hasMany(Project::class,'id','project_id');
+    public function project()
+    {
+        return $this->belongsTo(Project::class);
     }
-    public function users(){
-        return $this->hasMany(User::class,'id','user_id');
+    public function member()
+    {
+        return $this->belongsTo(User::class);
     }
+    public function user()
+    {
+        return $this->hasMany(User::class);
+    }
+
+
 }

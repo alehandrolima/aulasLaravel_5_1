@@ -25,4 +25,5 @@ class ProjectMembersRepositoryEloquent extends BaseRepository implements Project
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
+
 }

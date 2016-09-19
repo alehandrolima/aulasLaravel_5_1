@@ -11,6 +11,7 @@ namespace CodeProject\Services;
 
 use CodeProject\Repositories\ProjectRepository;
 use CodeProject\Validators\ProjectValidators;
+use LucaDegasperi\OAuth2Server\Facades\Authorizer;
 
 
 class ProjectService
@@ -27,7 +28,8 @@ class ProjectService
     public function index()
     {
         try {
-            return $this->repository->all();
+            //return $this->repository->all();
+            return $this->repository->findWhere(['owner_id'=> Authorizer::getResourceOwnerId()]);
         } catch (\Exception  $e){
             return [
                 'error' => true,
@@ -36,18 +38,7 @@ class ProjectService
         }
     }
 
-    public function show ($id)
-    {
-        try {
-            return $this->repository->find($id);
-        } catch (\Exception  $e){
-            return [
-                'error' => true,
-                'message' => $e->getMessage()
-            ];
-        }
-    }
-    
+
     public function store (array $data)
     {
         try {
@@ -91,6 +82,8 @@ class ProjectService
             ];
         }
     }
+
+
 
 
 }
